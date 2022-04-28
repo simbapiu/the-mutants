@@ -1,6 +1,4 @@
 class PeopleController < ApplicationController
-  http_basic_authenticate_with name: "admin", password: "secretPass"
-
   include StatsService
 
   def mutant
