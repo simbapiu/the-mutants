@@ -21,7 +21,7 @@ module StatsService
     def ratio
       return 0 if count_human_dna.zero?
 
-      count_mutant_dna/count_human_dna
+      count_mutant_dna.fdiv(count_human_dna)
     end
   end
 end
