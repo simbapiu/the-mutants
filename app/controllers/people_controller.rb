@@ -6,12 +6,14 @@ class PeopleController < ApplicationController
   def mutant
     dna = DnaAnalyzerService.new(person_params[:dna])
     dna.analyze_dna
-    dna.save_register
-
-    if dna.is_mutant?
-      render json: {}, status: 200
+    if dna.create_register.save
+      if dna.is_mutant?
+        render json: {}, status: 200
+      else
+        render json: {}, status: 403
+      end
     else
-      render json: {}, status: 403
+      render json: { message: "El ADN ya ha sido analizado." }, status: 409
     end
   end
 

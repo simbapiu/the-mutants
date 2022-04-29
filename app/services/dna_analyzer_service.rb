@@ -34,8 +34,8 @@ class DnaAnalyzerService
     @total_secuences > 1 ? true : false
   end
 
-  def save_register
-    Person.create!(is_mutant: is_mutant?, dna: dna.join("-"))
+  def create_register
+    Person.new(is_mutant: is_mutant?, dna: dna.join("-"))
   end
 
   private
